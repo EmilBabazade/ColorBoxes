@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import ColorBoxContainer from './ColorBoxContainer';
 
 function App() {
+  var colors = [];
+  while (colors.length < 100) {
+      do {
+          var color = Math.floor((Math.random()*1000000)+1);
+      } while (colors.indexOf(color) >= 0);
+      colors.push("#" + ("000000" + color.toString(16)).slice(-6));
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ColorBoxContainer possibleColors={colors} />
     </div>
   );
 }
